@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>كفو كلين - خدمات التنظيف الاحترافية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #00b09b;
+      --teal-dark: #008f7a;
+      --blue: #0077b6;
+      --blue-light: #48cae4;
+      --bg: #f0f4f8;
+      --white: #ffffff;
+      --text: #1a2e3b;
+      --muted: #5a7a8a;
+      --card-shadow: 0 8px 32px rgba(0,0,0,0.13);
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: linear-gradient(135deg, #e0f7f4 0%, #e8f4fd 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px 12px 100px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 24px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      animation: fadeUp .6s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--blue) 100%);
+      padding: 32px 24px 28px;
+      text-align: center;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -18px; left: 0; right: 0;
+      height: 36px;
+      background: var(--white);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+    .logo-icon {
+      font-size: 52px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .logo-icon svg { width: 60px; height: 60px; }
+    .brand-name {
+      color: var(--white);
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .brand-tag {
+      display: inline-block;
+      margin-top: 8px;
+      background: rgba(255,255,255,0.22);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* ── Body ── */
+    .body { padding: 40px 24px 24px; }
+
+    .city-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e8f4fd;
+      color: var(--blue);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .headline {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+    .subline {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    /* ── Offer ── */
+    .offer-box {
+      background: linear-gradient(135deg, #fff8e1, #fff3cd);
+      border: 2px dashed #f4b942;
+      border-radius: 16px;
+      padding: 16px 20px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .offer-label { font-size: 13px; color: #b07d00; font-weight: 700; }
+    .offer-price { font-size: 30px; font-weight: 900; color: #c97c00; }
+    .offer-note  { font-size: 12px; color: #9a7000; margin-top: 2px; }
+
+    /* ── Services ── */
+    .section-title {
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--teal-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px; height: 18px;
+      background: var(--teal);
+      border-radius: 4px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .service-item {
+      background: #f5fffe;
+      border: 1.5px solid #c8f0eb;
+      border-radius: 14px;
+      padding: 14px 12px;
+      text-align: center;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .service-item:active { transform: scale(.97); }
+    .service-icon { font-size: 28px; margin-bottom: 6px; }
+    .service-name { font-size: 13px; font-weight: 700; color: var(--text); }
+
+    /* ── Features ── */
+    .features { margin-bottom: 28px; }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f4f8;
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .feature-item:last-child { border-bottom: none; }
+    .check {
+      width: 22px; height: 22px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .check svg { width: 13px; height: 13px; }
+
+    /* ── Contact ── */
+    .contact-number {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .contact-number span {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--blue);
+      letter-spacing: 2px;
+      direction: ltr;
+      display: inline-block;
+    }
+    .contact-label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+
+    /* ── Buttons ── */
+    .btns { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px;
+      border-radius: 14px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 17px;
+      font-weight: 900;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform .18s, box-shadow .18s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .btn:active { transform: scale(.97); }
+
+    .btn-call {
+      background: linear-gradient(135deg, #0077b6, #0096c7);
+      color: var(--white);
+    }
+    .btn-call:hover { box-shadow: 0 6px 20px rgba(0,119,182,0.45); }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25d366, #128c5e);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-whatsapp::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.15);
+      animation: pulse-btn 2s ease-in-out infinite;
+    }
+    @keyframes pulse-btn {
+      0%,100% { opacity: 0; transform: scale(1); }
+      50%      { opacity: 1; transform: scale(1.04); }
+    }
+    .btn-whatsapp:hover { box-shadow: 0 6px 20px rgba(37,211,102,0.45); }
+
+    .btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    /* ── Footer / Designer ── */
+    .footer {
+      border-top: 1px solid #f0f4f8;
+      padding-top: 16px;
+      text-align: center;
+    }
+    .rights { font-size: 12px; color: #aac0cc; margin-bottom: 4px; }
+    .designer-link {
+      font-size: 13px;
+      color: var(--teal-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .designer-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-icon">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/>
+        <path d="M18 38 Q30 14 42 38" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <circle cx="30" cy="22" r="5" fill="white"/>
+        <path d="M22 44 Q30 40 38 44" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M14 44 Q30 36 46 44" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+    <div class="brand-name">كـفو كـلين</div>
+    <div class="brand-tag">خدمات التنظيف الاحترافية</div>
+  </div>
+
+  <!-- Body -->
+  <div class="body">
+
+    <div class="city-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      المملكة العربية السعودية
+    </div>
+
+    <div class="headline">نظافة احترافية بين يديك ✨</div>
+    <div class="subline">فريق متخصص يضمن لك منزلاً يلمع وتجربة تريح بالك</div>
+
+    <!-- Offer -->
+    <div class="offer-box">
+      <div class="offer-label">🔥 عرض خاص محدود</div>
+      <div class="offer-price">ابدأ من 150 ريال</div>
+      <div class="offer-note">اتصل الآن واستفد من العرض قبل انتهاؤه</div>
+    </div>
+
+    <!-- Services -->
+    <div class="section-title">خدماتنا</div>
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon">🏠</div>
+        <div class="service-name">تنظيف شامل</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">❄️</div>
+        <div class="service-name">تنظيف مكيفات</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🛋️</div>
+        <div class="service-name">تنظيف مجالس</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🔥</div>
+        <div class="service-name">تنظيف وصيانة أفران</div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="section-title">مميزاتنا</div>
+    <div class="features">
+      <div class="feature-item">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        فريق متخصص ومدرب احترافياً
+      </div>
+      <div class="feature-item">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        مواد تنظيف آمنة وعالية الجودة
+      </div>
+      <div class="feature-item">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        خدمة سريعة والتزام بالمواعيد
+      </div>
+      <div class="feature-item">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        ضمان الجودة أو نعيد الخدمة مجاناً
+      </div>
+      <div class="feature-item">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        أسعار منافسة تناسب الجميع
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-number">
+      <div class="contact-label">للتواصل والحجز</div>
+      <span>0577675231</span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btns">
+      <a class="btn btn-call" href="tel:+966577675231">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        اتصل الآن
+      </a>
+      <a class="btn btn-whatsapp" href="https://wa.me/966577675231" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.532 5.852L0 24l6.335-1.652A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.002-1.372l-.36-.213-3.722.976.993-3.63-.234-.373A9.818 9.818 0 1 1 12 21.818z"/></svg>
+        واتساب
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="rights">جميع الحقوق محفوظة © كفو كلين 2025</div>
+      <a class="designer-link" href="https://wa.me/201040100370" target="_blank" rel="noopener">
+        تم التصميم بواسطة م. محمد علي
+      </a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
